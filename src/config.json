@@ -1,0 +1,45 @@
+{
+  "exp_name": "AlsI2I + Viewed + iALS + random + tops",
+  "random_state": 137,
+  "num_recommendations": 100,
+  "train_data_path": "../../data/processed/train.parquet",
+  "val_data_path": "",
+  "test_data_path": "../../data/processed/test_inference.parquet",
+  "user_history_data_path": "../dumps/user_history/history_data.parquet",
+  "item_data_path": "../dumps/production/item_data/item_schedule_region.parquet",
+  "catboost_model_path": "../dumps/production/catboost/model_v0",
+  "dump_audit": true,
+  "used_selectors": [
+    {
+      "selector_class": "AlreadyViewedSelector",
+      "selector_path": "",
+      "selector_name": "already_viewed",
+      "selector_candidates": 100
+    },
+    {
+      "selector_class": "I2ISelector",
+      "selector_path": "../dumps/als/als_i2i.parquet",
+      "selector_name": "als_i2i",
+      "selector_candidates": 100
+    },
+    {
+      "selector_class": "IAlsSelector",
+      "selector_path": "../dumps/als_10_15",
+      "selector_name": "ials",
+      "selector_candidates": 100
+    },
+    {
+      "selector_class": "TopSelector",
+      "selector_path": "../dumps/top_selector/top_selector.json",
+      "selector_name": "top_selector",
+      "selector_candidates": 100
+    },
+    {
+      "selector_class": "RandomSelector",
+      "selector_path": "../dumps/popular_selector/most_freq.json",
+      "selector_name": "random_selector",
+      "selector_candidates": 100
+    }
+  ],
+  "output_path": "../dumps/recommendations/als_i2i__already_viewed__ials__random__tops"
+}
